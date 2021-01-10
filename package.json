@@ -1,6 +1,6 @@
 {
   "name": "@vuex-orm/core",
-  "version": "0.36.3",
+  "version": "0.40.0",
   "description": "The Vuex plugin to enable Object-Relational Mapping access to the Vuex Store.",
   "main": "dist/vuex-orm.cjs.js",
   "browser": "dist/vuex-orm.esm.js",
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuex-orm/vuex-orm.git"
+    "url": "ssh://git@github.com/patinthehat/vuex-orm.git"
   },
   "keywords": [
     "vue",
