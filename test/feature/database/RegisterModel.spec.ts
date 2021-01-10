@@ -1,10 +1,10 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+//import Vue from 'vue'
+import { createStore } from 'vuex'
 import VuexORM from '@/index'
 import Database from '@/database/Database'
 import Model from '@/model/Model'
 
-Vue.use(Vuex)
+//Vue.use(Vuex)
 
 describe('Feature – Database - Register Model', () => {
   class User extends Model {
@@ -66,7 +66,7 @@ describe('Feature – Database - Register Model', () => {
     database.register(User)
     database.register(Hobby)
 
-    const store = new Vuex.Store({
+    const store = createStore({
       plugins: [VuexORM.install(database)],
       strict: true
     })
@@ -93,7 +93,7 @@ describe('Feature – Database - Register Model', () => {
 
     database.register(User, userModule)
 
-    const store = new Vuex.Store({
+    const store = createStore({
       plugins: [VuexORM.install(database)],
       strict: true
     })
@@ -121,7 +121,7 @@ describe('Feature – Database - Register Model', () => {
 
     database.register(User)
 
-    const store = new Vuex.Store({
+    const store = createStore({
       plugins: [VuexORM.install(database)],
       strict: true
     })
@@ -148,7 +148,7 @@ describe('Feature – Database - Register Model', () => {
   it('can register modules after being installed to vuex.', async () => {
     const database = new Database()
 
-    const store = new Vuex.Store({
+    const store = createStore({
       plugins: [VuexORM.install(database)],
       strict: true
     })
@@ -178,7 +178,7 @@ describe('Feature – Database - Register Model', () => {
 
     database.register(User)
 
-    const store = new Vuex.Store({
+    const store = createStore({
       plugins: [VuexORM.install(database)],
       strict: true
     })

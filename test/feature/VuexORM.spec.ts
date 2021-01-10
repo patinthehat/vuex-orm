@@ -1,9 +1,9 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+//import Vue from 'vue'
+import { createStore } from 'vuex'
 import VuexORM from '@/index'
 
 describe('Feature – Vuex ORM', () => {
-  Vue.use(Vuex)
+  //Vue.use(Vuex)
 
   class User extends VuexORM.Model {
     static entity = 'users'
@@ -22,7 +22,7 @@ describe('Feature – Vuex ORM', () => {
     database.register(User, users)
     database.register(Post, posts)
 
-    const store = new Vuex.Store({
+    const store = createStore({
       plugins: [VuexORM.install(database)]
     })
 
@@ -37,7 +37,7 @@ describe('Feature – Vuex ORM', () => {
     database.register(User)
     database.register(Post)
 
-    const store = new Vuex.Store({
+    const store = createStore({
       plugins: [VuexORM.install(database)]
     })
 
@@ -54,7 +54,7 @@ describe('Feature – Vuex ORM', () => {
 
     const options = { namespace: 'my_entities' }
 
-    const store = new Vuex.Store({
+    const store = createStore({
       plugins: [VuexORM.install(database, options)]
     })
 
@@ -76,7 +76,7 @@ describe('Feature – Vuex ORM', () => {
 
     database.register(User, users)
 
-    const store = new Vuex.Store({
+    const store = createStore({
       plugins: [VuexORM.install(database)]
     })
 

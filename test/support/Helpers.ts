@@ -1,12 +1,13 @@
 import Vue from 'vue'
-import Vuex, { Store, Module } from 'vuex'
+//import Vuex, { Store, Module } from 'vuex'
 import VuexORM from '@/index'
 import { mapValues } from '@/support/Utils'
 import Database from '@/database/Database'
 import Model from '@/model/Model'
 import State from '@/modules/contracts/State'
+import { createStore, Store } from 'vuex'
 
-Vue.use(Vuex)
+//Vue.use(Vuex)
 
 export interface Entities {
   model: typeof Model
@@ -35,7 +36,7 @@ export function createStore(
       : database.register(entity.model, entity.module)
   })
 
-  return new Store({
+  return createStore({
     plugins: [VuexORM.install(database, { namespace })],
     strict: true
   })
@@ -45,7 +46,7 @@ export function createStore(
  * Create a new store instance from the given database.
  */
 export function createStoreFromDatabase(database: Database): Store<any> {
-  return new Store({
+  return createStore({
     plugins: [VuexORM.install(database)],
     strict: true
   })

@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+//import Vue from 'vue'
+import { createStore } from 'vuex'
 import VuexORM from '@/index'
 import Model from '@/model/Model'
 import Query from '@/query/Query'
@@ -20,7 +20,7 @@ describe('Plugin', () => {
 
   database.register(User, {})
 
-  Vue.use(Vuex)
+  //Vue.use(Vuex)
 
   it('add additional feature to the Model', async () => {
     const plugin = {
@@ -39,7 +39,7 @@ describe('Plugin', () => {
 
     VuexORM.use(plugin)
 
-    const store = new Vuex.Store({
+    const store = createStore({
       plugins: [VuexORM.install(database)]
     })
 
@@ -68,7 +68,7 @@ describe('Plugin', () => {
 
     VuexORM.use(plugin)
 
-    const store = new Vuex.Store({
+    const store = createStore({
       plugins: [VuexORM.install(database)]
     })
 
@@ -92,7 +92,7 @@ describe('Plugin', () => {
 
     VuexORM.use(plugin)
 
-    const store = new Vuex.Store({
+    const store = createStore({
       plugins: [VuexORM.install(database)]
     })
 
@@ -110,7 +110,7 @@ describe('Plugin', () => {
 
     VuexORM.use(plugin)
 
-    const store = new Vuex.Store({
+    const store = createStore({
       plugins: [VuexORM.install(database)]
     })
 
@@ -128,7 +128,7 @@ describe('Plugin', () => {
 
     VuexORM.use(plugin)
 
-    const store = new Vuex.Store({
+    const store = createStore({
       plugins: [VuexORM.install(database)]
     })
 
@@ -146,7 +146,7 @@ describe('Plugin', () => {
 
     VuexORM.use(plugin)
 
-    const store = new Vuex.Store({
+    const store = createStore({
       plugins: [VuexORM.install(database)]
     })
 
@@ -164,7 +164,7 @@ describe('Plugin', () => {
 
     VuexORM.use(plugin)
 
-    const store = new Vuex.Store({
+    const store = createStore({
       plugins: [VuexORM.install(database)]
     })
 
