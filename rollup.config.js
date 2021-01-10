@@ -4,6 +4,8 @@ import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import ts from 'rollup-plugin-typescript2'
 import { terser } from 'rollup-plugin-terser'
+import esbuild from 'rollup-plugin-esbuild'
+
 
 const configs = [
   { input: 'src/index.ts', file: 'dist/vuex-orm.esm.js', format: 'es', browser: true, env: 'development' },
@@ -25,6 +27,7 @@ function createEntry(config) {
     output: {
       file: config.file,
       format: config.format,
+      exports: 'auto',
       globals: {
         vue: 'Vue'
       }
@@ -48,6 +51,35 @@ function createEntry(config) {
 
   c.plugins.push(resolve())
   c.plugins.push(commonjs())
+  
+/*
+  c.plugins.push(esbuild({
+      // All options are optional
+      include: /\.[jt]sx?$/, // default, inferred from `loaders` option
+      exclude: /node_modules/, // default
+      sourceMap: false, // default
+      minify: process.env.NODE_ENV === 'production',
+      target: 'es2018', // default, or 'es20XX', 'esnext'
+      format: 'cjs',
+      platform: 'node',
+      //jsxFactory: 'React.createElement',
+      //jsxFragment: 'React.Fragment'
+      // Like @rollup/plugin-replace
+      //define: {
+      //  __VERSION__: '"x.y.z"'
+      //},
+      tsconfig: 'tsconfig.json', // default
+      // Add extra loaders
+      loaders: {
+        // Add .json files support
+        // require @rollup/plugin-commonjs
+        '.json': 'json',
+        // Enable JSX in .js files too
+        '.js': 'jsx'
+      }
+    }))
+*/
+
 
   c.plugins.push(ts({
     check: config.format === 'es' && config.browser && config.env === 'development',
@@ -61,6 +93,7 @@ function createEntry(config) {
       exclude: ['test']
     }
   }))
+
 
   if (config.minify) {
     c.plugins.push(terser({ module: config.format === 'es' }))
